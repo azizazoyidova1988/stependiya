@@ -1,0 +1,125 @@
+<!doctype html>
+{%load static%}
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-eOJMYsd53ii+scO/bJGFsiCZc+5NDVN2yr8+0RDqr0Ql0h+rP48ckxlpbzKgwra6" crossorigin="anonymous">
+        <link href="{% static 'css\my_style.css'%}" rel="stylesheet" >
+        <title>Talaba</title>
+    </head>
+    <body>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <div class="container-fluid">
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav">
+        <li class="nav-item">
+          <a class="nav-link"   href="">OTM Adminstratori</a>
+        </li>
+
+        <li class="nav-item">
+          <a class="nav-link active" aria-current="page"  href="">Subjects</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
+<div style="margin-left:25px; margin-right:25px">
+            <form method="post" enctype="multipart/form-data">
+                {% csrf_token %}
+                <div class="mb-3">
+                    <label >Talaba ism sharifi</label>
+                  {{ form.ism_familiya }}
+                </div>
+                <div class="mb-3">
+                    <label >Tug'ilgan yili</label>
+                  {{ form.t_yil }}
+                </div>
+                <div class="mb-3">
+                    <label >Yoshi</label>
+                  {{ form.yosh }}
+                </div>
+                <div class="mb-3">
+                    <label >Pasport_seriyasi</label>
+                  {{ form.pasport_seriya }}
+                </div>
+                <div class="mb-3">
+                    <label >Fuqaroligi</label>
+                  {{ form.fuqarolik }}
+                </div>
+                <div class="mb-3">
+                    <label >Millati</label>
+                  {{ form.millati }}
+                </div>
+                <div class="mb-3">
+                    <label >Tugilgan viloyati</label>
+                  {{ form.tugilgan_viloyat }}
+                </div>
+                <div class="mb-3">
+                    <label >Tuman</label>
+                  {{ form.t_tuman }}
+                </div>
+                <div class="mb-3">
+                    <label >Oliy Ta'lim Muassasasi</label>
+                  {{ form.otm }}
+                </div>
+                <div class="mb-3">
+                    <label >Ta'lim turi</label>
+                  {{ form.talim_turi }}
+                </div>
+                <div class="mb-3">
+                    <label >Ta'lim shakli</label>
+                  {{ form.talim_shakli }}
+                </div>
+                <div class="mb-3">
+                    <label >Ta'lim yo'nalishi</label>
+                  {{ form.talim_yonalishi }}
+                </div>
+                <div class="mb-3">
+                    <label >O'quv yili</label>
+                  {{ form.oquv_yili }}
+                </div>
+                <div class="mb-3">
+                    <label >O'quv kursi</label>
+                  {{ form.oquv_kursi }}
+                </div>
+                <div class="mb-3">
+                    <label >Chet tili</label>
+                  {{ form.chet_tili }}
+                </div>
+                <div class="mb-3">
+                    <label >Sertifikati</label>
+                  {{ form.sertifikati }}
+                </div>
+                <div class="mb-3">
+                    <label >Chet tilini bilish darajasi</label>
+                  {{ form.darajasi }}
+                </div>
+                <div class="mb-3">
+                    <label >Erishgan yutuqlari</label>
+                  {{ form.erishgan_yutuqlar }}
+                </div>
+                <div class="mb-3">
+                    <label >Ilmiy yutuqlari</label>
+                  {{ form.ilmiy_yutuqlar }}
+                </div>
+<!--                -->
+                <div class="mb-3">
+                    <label >Ariza statusi</label>
+                  {{ form.status }}
+                </div>
+
+                <button type="submit" class="btn btn-primary">Add</button>
+            </form>
+        </div>
+
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.bundle.min.js"
+                integrity="sha384-JEW9xMcG8R+pH31jmWH6WWP0WintQrMb4s7ZOdauHnUtxwoG2vI5DkLtS3qm9Ekf" crossorigin="anonymous"></script>
+    </body>
+</html>
+
+
+
+
+
+

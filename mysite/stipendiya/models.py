@@ -1,4 +1,7 @@
 from django.db import models
+from django.core.validators import FileExtensionValidator
+
+val = [FileExtensionValidator(allowed_extensions=['pdf', 'jpg', 'png'])]
 
 
 class Vazirlik(models.Model):
@@ -135,9 +138,20 @@ class Talim_yonalishi(models.Model):
     def __str__(self):
         return self.yonalish_nomi
 
+class Reyting_baho(models.Model):
+    name=models.CharField(max_length=50,blank=True,null=True)
+    rating=models.IntegerField(blank=True, null=True, default=0)
+    created_at = models.DateField(auto_now_add=True)
+
+    class Meta:
+        db_table = "reyting"
+
+    def __str__(self):
+        return self.name
 
 class Fanlar(models.Model):
     name = models.CharField(max_length=100, blank=False, null=False)
+    rating=models.ForeignKey(Reyting_baho, blank=True, null=True, on_delete=models.SET_NULL)
     created_at = models.DateField(auto_now_add=True)
 
     class Meta:
@@ -247,6 +261,7 @@ class Ariza_holati(models.Model):
 
 
 class Ariza_statusi(models.Model):
+    nomi = models.CharField(max_length=100, blank=True, null=False)
     status = models.CharField(max_length=100, blank=False, null=False)
     created_at = models.DateField(auto_now_add=True)
 
@@ -272,24 +287,27 @@ class Administrator_royxati(models.Model):
 class Talaba(models.Model):
     ism_familiya = models.CharField(max_length=50, blank=False, null=False)
     t_yil = models.IntegerField(blank=False, null=False, default=1)
-    yosh=models.IntegerField(blank=False, null=False, default=1)
-    pasport_seriya=models.CharField(max_length=30,blank=False,null=False)
-    fuqarolik=models.ForeignKey(Fuqarolik,blank=False,null=True,on_delete=models.SET_NULL)
-    millati=models.ForeignKey(Millat,blank=False,null=True,on_delete=models.SET_NULL)
-    tugilgan_viloyat=models.ForeignKey(Viloyatlar,blank=False,null=True,on_delete=models.SET_NULL)
-    t_tuman=models.ForeignKey(Tumanlar,blank=False,null=True,on_delete=models.SET_NULL)
-    otm=models.ForeignKey(OTM,blank=False,null=True,on_delete=models.SET_NULL)
-    talim_turi=models.ForeignKey(Talim_turi,blank=False,null=True,on_delete=models.SET_NULL)
-    talim_shakli=models.ForeignKey(Talim_shakli,blank=False,null=True,on_delete=models.SET_NULL)
-    talim_yonalishi=models.ForeignKey(Talim_yonalishi,blank=False,null=True,on_delete=models.SET_NULL)
-    oquv_yili=models.ForeignKey(Oquv_yili,blank=False,null=True,on_delete=models.SET_NULL)
-    oquv_kursi=models.ForeignKey(Oquv_kursi,blank=False,null=True,on_delete=models.SET_NULL)
-    chet_tili=models.ForeignKey(Chet_tili,blank=False,null=True,on_delete=models.SET_NULL)
-    sertifikati=models.ForeignKey(Chet_tili_sertifikatlari,blank=False,null=True,on_delete=models.SET_NULL)
-    darajasi=models.ForeignKey(Chet_tili_darajasi,blank=False,null=True,on_delete=models.SET_NULL)
-    erishgan_yutuqlar=models.ForeignKey(Erishgan_yutuqlar,blank=False,null=True,on_delete=models.SET_NULL)
-    ilmiy_yutuqlar=models.ForeignKey(Ilmiy_yutuqlar,blank=False,null=True,on_delete=models.SET_NULL)
-    fan_baholari=models.ForeignKey(Fanlar,blank=False,null=True,on_delete=models.SET_NULL)
+    yosh = models.IntegerField(blank=False, null=False, default=1)
+    pasport_seriya = models.CharField(max_length=30, blank=False, null=False)
+    fuqarolik = models.ForeignKey(Fuqarolik, blank=False, null=True, on_delete=models.SET_NULL)
+    millati = models.ForeignKey(Millat, blank=False, null=True, on_delete=models.SET_NULL)
+    tugilgan_viloyat = models.ForeignKey(Viloyatlar, blank=False, null=True, on_delete=models.SET_NULL)
+    t_tuman = models.ForeignKey(Tumanlar, blank=False, null=True, on_delete=models.SET_NULL)
+    otm = models.ForeignKey(OTM, blank=False, null=True, on_delete=models.SET_NULL)
+    talim_turi = models.ForeignKey(Talim_turi, blank=False, null=True, on_delete=models.SET_NULL)
+    talim_shakli = models.ForeignKey(Talim_shakli, blank=False, null=True, on_delete=models.SET_NULL)
+    talim_yonalishi = models.ForeignKey(Talim_yonalishi, blank=False, null=True, on_delete=models.SET_NULL)
+    oquv_yili = models.ForeignKey(Oquv_yili, blank=False, null=True, on_delete=models.SET_NULL)
+    oquv_kursi = models.ForeignKey(Oquv_kursi, blank=False, null=True, on_delete=models.SET_NULL)
+    chet_tili = models.ForeignKey(Chet_tili, blank=False, null=True, on_delete=models.SET_NULL)
+    sertifikati = models.FileField(validators=val, blank=True,null=True)
+    darajasi = models.ForeignKey(Chet_tili_darajasi, blank=False, null=True, on_delete=models.SET_NULL)
+    erishgan_yutuqlar =  models.FileField(validators=val, blank=True,null=True)
+    ilmiy_yutuqlar =  models.FileField(validators=val, blank=True,null=True)
+    ozbekiston_tarixi = models.ForeignKey(Fanlar, related_name="ozbekiston_tarixi", blank=True, null=True, on_delete=models.SET_NULL)
+    informatika = models.ForeignKey(Fanlar, related_name="informatika", blank=True, null=True, on_delete=models.SET_NULL)
+    ingliz_tili = models.ForeignKey(Fanlar, related_name="ingliz_tili", blank=True, null=True, on_delete=models.SET_NULL)
+    status = models.ForeignKey(Ariza_statusi, blank=True, null=True, on_delete=models.SET_NULL)
     created_at = models.DateField(auto_now_add=True)
 
     class Meta:
@@ -298,25 +316,8 @@ class Talaba(models.Model):
     def __str__(self):
         return self.ism_familiya
 
-class Talaba_xisoboti(models.Model):
-    talaba = models.ForeignKey(Talaba, blank=False, null=True, on_delete=models.SET_NULL)
-    created_at = models.DateField(auto_now_add=True)
 
-    class Meta:
-        db_table = "talaba_xisoboti"
 
-    def __str__(self):
-        return self.talaba
-
-class Talaba_faoliyati_xisoboti(models.Model):
-    talaba = models.ForeignKey(Talaba, blank=False, null=True, on_delete=models.SET_NULL)
-    created_at = models.DateField(auto_now_add=True)
-
-    class Meta:
-        db_table = "talaba_faoliyati"
-
-    def __str__(self):
-        return self.talaba
 
 class Yangi_arizalar(models.Model):
     talaba = models.ForeignKey(Talaba, blank=False, null=True, on_delete=models.SET_NULL)
@@ -329,6 +330,7 @@ class Yangi_arizalar(models.Model):
     def __str__(self):
         return self.talaba
 
+
 class Qabul_qilingan_arizalar(models.Model):
     talaba = models.ForeignKey(Talaba, blank=False, null=True, on_delete=models.SET_NULL)
     status = models.ForeignKey(Ariza_statusi, blank=False, null=True, on_delete=models.SET_NULL)
@@ -340,6 +342,7 @@ class Qabul_qilingan_arizalar(models.Model):
     def __str__(self):
         return self.talaba
 
+
 class Rad_qilingan_arizalar(models.Model):
     talaba = models.ForeignKey(Talaba, blank=False, null=True, on_delete=models.SET_NULL)
     status = models.ForeignKey(Ariza_statusi, blank=False, null=True, on_delete=models.SET_NULL)
@@ -350,3 +353,5 @@ class Rad_qilingan_arizalar(models.Model):
 
     def __str__(self):
         return self.talaba
+
+

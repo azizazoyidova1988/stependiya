@@ -1,0 +1,191 @@
+{% extends 'dashboard/base.html' %}
+{% load static %}
+{% block content %}
+<section class="content-header">
+  <div class="container-fluid">
+    <div class="row mb-2">
+      <div class="col-sm-6">
+        <h1>Talaba Listi</h1>
+      </div>
+      <div class="col-sm-6">
+        <ol class="breadcrumb float-sm-right">
+          <li class="breadcrumb-item"><a href="{%url 'dashboard' %}">Home</a></li>
+          <li class="breadcrumb-item active">Talaba Listi</li>
+        </ol>
+      </div>
+    </div>
+  </div><!-- /.container-fluid -->
+</section>
+<section class="content">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-12">
+            <div class="card card-primary">
+              <form method="post" enctype="multipart/form-data">
+                {% csrf_token %}
+                <div class="card-body">
+                  <div class="form-group">
+                    <label >Talaba ism sharifi</label>
+                  {{ form.ism_familiya }}
+                </div>
+                </div>
+                <div class="card-body">
+                  <div class="form-group">
+                    <label >Tug'ilgan yili</label>
+                  {{ form.t_yil }}
+                </div>
+                </div>
+                <div class="card-body">
+                  <div class="form-group">
+                    <label >Yoshi</label>
+                  {{ form.yosh }}
+                </div>
+                </div>
+
+                <div class="card-body">
+                  <div class="form-group">
+                    <label >Pasport_seriyasi</label>
+                  {{ form.pasport_seriya }}
+                </div>
+                </div>
+                <div class="card-body">
+                  <div class="form-group">
+                    <label >Fuqaroligi</label>
+                  {{ form.fuqarolik }}
+                </div>
+                </div>
+                <div class="card-body">
+                  <div class="form-group">
+                    <label >Millati</label>
+                  {{ form.millati }}
+                </div>
+                </div>
+
+                <div class="card-body">
+                  <div class="form-group">
+                    <label >Tugilgan viloyati</label>
+                  {{ form.tugilgan_viloyat }}
+                </div>
+                </div>
+                <div class="card-body">
+                  <div class="form-group">
+                    <label >Tuman</label>
+                  {{ form.t_tuman }}
+                </div>
+                </div>
+
+                <div class="card-body">
+                  <div class="form-group">
+                    <label >Oliy Ta'lim Muassasasi</label>
+                  {{ form.otm }}
+                </div>
+                </div>
+                <div class="card-body">
+                  <div class="form-group">
+                    <label >Ta'lim turi</label>
+                  {{ form.talim_turi }}
+                </div>
+                </div>
+
+                <div class="card-body">
+                  <div class="form-group">
+                    <label >Ta'lim shakli</label>
+                  {{ form.talim_shakli }}
+                </div>
+                </div>
+
+                <div class="card-body">
+                  <div class="form-group">
+                    <label >Ta'lim yo'nalishi</label>
+                  {{ form.talim_yonalishi }}
+                </div>
+                </div>
+
+                <div class="card-body">
+                  <div class="form-group">
+                    <label >O'quv yili</label>
+                  {{ form.oquv_yili }}
+                </div>
+                </div>
+
+                <div class="card-body">
+                  <div class="form-group">
+                    <label >O'quv kursi</label>
+                  {{ form.oquv_kursi }}
+                </div>
+                </div>
+
+                <div class="card-body">
+                  <div class="form-group">
+                    <label >Chet tili</label>
+                  {{ form.chet_tili }}
+                </div>
+                </div>
+
+                <div class="card-body">
+                  <div class="form-group">
+                    <label >Sertifikati</label>
+                  {{ form.sertifikati }}
+                </div>
+                </div>
+
+                <div class="card-body">
+                  <div class="form-group">
+                    <label >Chet tilini bilish darajasi</label>
+                  {{ form.darajasi }}
+                </div>
+                </div>
+
+                <div class="card-body">
+                  <div class="form-group">
+                    <label >Erishgan yutuqlari</label>
+                  {{ form.erishgan_yutuqlar }}
+                </div>
+                </div>
+
+                <div class="card-body">
+                  <div class="form-group">
+                    <label >Ilmiy yutuqlari</label>
+                  {{ form.ilmiy_yutuqlar }}
+                </div>
+                </div>
+
+                <div class="card-body">
+                  <div class="form-group">
+                    <label >O'zbekiston tarixi fanidan olgan bahosi</label>
+                  {{ form.ozbekiston_tarixi }}
+                </div>
+                </div>
+
+                <div class="card-body">
+                  <div class="form-group">
+                    <label >Informatika fanidan olgan bahosi</label>
+                  {{ form.informatika }}
+                </div>
+                </div>
+
+                <div class="card-body">
+                  <div class="form-group">
+                    <label >Ingliz tili fanidan olgan bahosi</label>
+                  {{ form.ingliz_tili }}
+                </div>
+                </div>
+
+                <div class="card-body">
+                  <div class="form-group">
+                    <label >Ariza statusi</label>
+                  {{ form.status }}
+                </div>
+                </div>
+
+                <button type="submit" class="btn btn-primary">Add</button>
+            </form>
+
+
+            </div>
+
+          </div>
+        </div>
+    </div>
+</section>
+{% endblock %}

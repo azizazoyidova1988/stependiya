@@ -1,0 +1,140 @@
+{% extends 'dashboard/base.html' %}
+{% load static %}
+{% block content %}
+
+<!-- Small boxes (Stat box) -->
+<div class="col-md-12">
+
+        <div class="row">
+           <div class="col-lg-3 col-6">
+            <!-- small box -->
+            <div class="small-box bg-primary">
+              <div class="inner">
+                <h3></h3>
+
+                <p></p>
+              </div>
+              <div class="icon">
+                <i class="ion ion-bag"></i>
+              </div>
+              <a href="#" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+            </div>
+          </div>
+
+                    <!-- ./col -->
+
+          <div class="col-lg-3 col-6">
+            <!-- small box -->
+            <div class="small-box bg-danger">
+              <div class="inner">
+                <h3><sup style="font-size: 20px"></sup></h3>
+
+                <p></p>
+              </div>
+              <div class="icon">
+                <i class="ion ion-stats-bars"></i>
+              </div>
+              <a href="#" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+            </div>
+          </div>
+          <!-- ./col -->
+
+          <div class="col-lg-3 col-6">
+            <!-- small box -->
+            <div class="small-box bg-warning">
+              <div class="inner">
+                <h3></h3>
+
+                <p></p>
+              </div>
+              <div class="icon">
+                <i class="ion ion-person-add"></i>
+              </div>
+              <a href="#" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+            </div>
+          </div>
+
+          <div class="col-lg-3 col-6">
+            <!-- small box -->
+            <div class="small-box bg-success">
+              <div class="inner">
+                <h3></h3>
+
+                <p></p>
+              </div>
+              <div class="icon">
+                <i class="ion ion-pie-graph"></i>
+              </div>
+              <a href="#" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+            </div>
+          </div>
+
+          <!-- ./col -->
+        </div>
+        <!-- /.row -->
+  </div>
+
+
+
+
+<div class="table-responsive">
+ <div class="card card-danger card-outline">
+      <div class="card-header">
+                <h3 class="card-title">
+                  <i class="far fa-chart-bar"></i>
+                  Products
+                </h3>
+
+                <div class="card-tools">
+                  <button type="button" class="btn btn-warning" data-card-widget="collapse">
+                    <i class="fas fa-minus">-</i>
+                  </button>
+                </div>
+              </div>
+            <table class="table m-0">
+              <thead>
+              <tr>
+                <th>Product ID</th>
+                <th>Product name</th>
+                <th>Product price</th>
+                <th>Product area</th>
+                <th>Created_at</th>
+              </tr>
+              </thead>
+              <tbody>
+
+              <tr>
+                <td><a href="pages/examples/invoice.html"></a></td>
+                <td></td>
+
+                <td><span class="badge badge-success"> </span></td>
+
+                <td><span class="badge badge-danger"></span></td>
+
+                <td>
+                  <div class="sparkbar" data-color="#00a65a" data-height="20"></div>
+                </td>
+              </tr>
+
+                    </tbody>
+                  </table>
+                </div>
+                </div>
+                </div>
+
+
+
+{% endblock %}
+{% block javascript %}
+<script src="{% static 'dashboard/plugins/jquery/jquery.min.js' %}"></script>
+<script src="{% static 'dashboard/plugins/bootstrap/js/bootstrap.bundle.min.js' %}"></script>
+<script src="{% static 'dashboard/dist/js/adminlte.min.js' %}"></script>
+<script src="{% static 'dashboard/plugins/flot/jquery.flot.js' %}"></script>
+<script src="{% static 'dashboard/plugins/flot/plugins/jquery.flot.resize.js' %}"></script>
+<script src="{% static 'dashboard/plugins/flot/plugins/jquery.flot.pie.js' %}"></script>
+<script src="{% static 'dashboard/dist/js/demo.js' %}"></script>
+
+
+
+
+{% endblock %}

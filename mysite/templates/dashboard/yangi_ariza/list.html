@@ -1,0 +1,64 @@
+{% extends 'dashboard/base.html' %}
+{% load static %}
+{% block content %}
+<section class="content-header">
+  <div class="container-fluid">
+    <div class="row mb-2">
+      <div class="col-sm-6">
+        <h1>Yangi arizalar listi</h1>
+      </div>
+      <div class="col-sm-6">
+        <ol class="breadcrumb float-sm-right">
+          <li class="breadcrumb-item"><a href="{%url 'dashboard' %}">Home</a></li>
+          <li class="breadcrumb-item active">Yangi arizalar listi</li>
+        </ol>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="content">
+    <div class="container-fluid">
+        <div class="row">
+          <div class="col-12">
+            <div class="card">
+
+              <!-- /.card-header -->
+              <div class="card-body table-responsive p-0">
+                <table class="table table-hover text-nowrap">
+                  <thead>
+                    <tr>
+                      <th>№</th>
+                      <th>Talaba ism familiyasi</th>
+                      <th>O'zbekiston tarixi fanidan bahosi</th>
+                      <th>Informatika fanidan bahosi</th>
+                      <th>Ingliz tili fanidan bahosi</th>
+                      <th>Date</th>
+
+                    </tr>
+                  </thead>
+                  <tbody>
+
+                    {% for ariza in yangi_ariza %}
+                    <tr>
+                      <td>{{forloop.counter}}</td>
+                      <td>{{ ariza.ism_familiya }}</td>
+                      <td>{{ ariza.ozbekiston_tarixi }}</td>
+                      <td>{{ ariza.informatika }}</td>
+                      <td>{{ ariza.ingliz_tili }}</td>
+                      <td>{{ ariza.created_at }}</td>
+
+                      </tr>
+                    {% endfor %}
+                  </tbody>
+                </table>
+              </div>
+              <!-- /.card-body -->
+            </div>
+            <!-- /.card -->
+          </div>
+        </div>
+    </div>
+</section>
+{% endblock %}
+
